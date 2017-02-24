@@ -64,7 +64,8 @@ var InfiniteScroll = function (_Component) {
                 threshold = _props.threshold,
                 useCapture = _props.useCapture,
                 useWindow = _props.useWindow,
-                props = _objectWithoutProperties(_props, ['children', 'element', 'hasMore', 'initialLoad', 'isReverse', 'loader', 'loadMore', 'pageStart', 'threshold', 'useCapture', 'useWindow']);
+                page = _props.page,
+                props = _objectWithoutProperties(_props, ['children', 'element', 'hasMore', 'initialLoad', 'isReverse', 'loader', 'loadMore', 'pageStart', 'threshold', 'useCapture', 'useWindow', 'page']);
 
             props.ref = function (node) {
                 _this2.scrollComponent = node;

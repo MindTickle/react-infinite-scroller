@@ -36,12 +36,16 @@ var InfiniteScroll = function (_Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             this.pageLoaded = this.props.pageStart;
+            this.page = this.props.page;
             this.attachScrollListener();
         }
     }, {
         key: 'componentDidUpdate',
         value: function componentDidUpdate() {
-            this.attachScrollListener();
+            if (this.props.page !== this.page) {
+                this.page = this.props.page;
+                this.attachScrollListener();
+            }
         }
     }, {
         key: 'render',

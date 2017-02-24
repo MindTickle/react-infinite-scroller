@@ -11,6 +11,7 @@ export default class InfiniteScroll extends Component {
         threshold: PropTypes.number,
         useCapture: PropTypes.bool,
         useWindow: PropTypes.bool,
+        page: PropTypes.number
     };
 
     static defaultProps = {
@@ -32,11 +33,15 @@ export default class InfiniteScroll extends Component {
 
     componentDidMount() {
         this.pageLoaded = this.props.pageStart;
+        this.page = this.props.page;
         this.attachScrollListener();
     }
 
     componentDidUpdate() {
-        this.attachScrollListener();
+        if (this.props.page !== this.page) {
+            this.page = this.props.page;
+            this.attachScrollListener();
+        }
     }
 
     render() {
@@ -125,7 +130,7 @@ export default class InfiniteScroll extends Component {
     componentWillUnmount() {
         this.detachScrollListener();
     }
-    
+
     // Set a defaut loader for all your `InfiniteScroll` components
     setDefaultLoader(loader) {
         this._defaultLoader = loader;

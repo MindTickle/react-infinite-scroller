@@ -34,20 +34,19 @@ var InfiniteScroll = function (_Component) {
 
     _createClass(InfiniteScroll, [{
         key: 'componentDidMount',
+        value: function componentDidMount() {
+            this.pageLoaded = this.props.pageStart;
+            this.page = this.props.page;
+            this.attachScrollListener();
+        }
+    }, {
+        key: 'componentDidUpdate',
         value: function componentDidUpdate() {
             if (this.props.page < this.page) {
                 // component has been reloaded (mostly by sort order change)
                 this.page = this.props.page;
                 this.detachScrollListener();
             } else if (this.props.page > this.page) {
-                this.page = this.props.page;
-                this.attachScrollListener();
-            }
-        }
-    }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            if (this.props.page !== this.page) {
                 this.page = this.props.page;
                 this.attachScrollListener();
             }
